@@ -2,17 +2,17 @@ class AudioPlayer {
 	constructor(audioSource) {
 		this.audioSource = audioSource;
 		this.tracks = [{
-				title: "Never Alone Instrumental",
-				artist: "Knine",
-				url: "/music/99 - Never Alone Instrumental.mp3"
-			}, {
-				title: "Passport (Instrumental)",
-				artist: "Urban D.",
-				url: "/music/99.959 Passport (Instrumental).mp3"
-			}, {
 				title: "Little Jesus (Instrumental)",
 				artist: "Fla.vor Alliance",
 				url: "/music/100.993 - Little Jesus (Instrumental).mp3"
+			}, {
+				title: "Passport (Instrumental)",
+				artist: "Urban D.",
+				url: "/music/99.959 - Passport (Instrumental).mp3"
+			}, {
+				title: "Never Alone Instrumental",
+				artist: "Knine",
+				url: "/music/99 - Never Alone Instrumental.mp3"
 			}, {
 				title: "Born Again Beat",
 				artist: "Tunnel Rats",
@@ -27,7 +27,7 @@ class AudioPlayer {
 				url: "/music/93.002 -Bang Instrumental.mp3"
 			}, {
 				title: "Jump Off - One Shot EP (Instrumental)",
-				artist: "Knine",
+				artist: "Bobby Bishop",
 				url: "/music/93.006 - Jump Off - One Shot EP (Instrumental).mp3"
 			}, {
 				title: "Peter Instrumental",
@@ -48,7 +48,39 @@ class AudioPlayer {
 			}, {
 				title: "Go Hard feat Wonderous & Pettidee (Instrumental)",
 				artist: "Tre9",
-				url: "/music/73.493 - Go Hard feat Wonderous & Pettidee (Instrumental).mp3"
+				url: "/music/73.493 - Go Hard feat Wonderous & Pettidee  (Instrumental).mp3"
+			}, {
+				title: "Dear Holy Hip Hop (Instrumental)",
+				artist: "R Swift",
+				url: "/music/83.692 - R Swift - Dear Holy Hip Hop (Instrumental).mp3"
+			}, {
+				title: "The Founder",
+				artist: "Beat Rabbi & Deepspace5",
+				url: "/music/84.999 - The Founder (2).mp3"
+			}, {
+				title: "Better Place Instrumental",
+				artist: "Knine",
+				url: "/music/85 - Better Place Instrumental.mp3"
+			}, {
+				title: "Gone Away Instrumental",
+				artist: "SGR Gladiators",
+				url: "/music/85.954 - SGR Gladiators  - Gone Away Instrumental.mp3"
+			}, {
+				title: "Suburbs (Remix) feat Lil KeKe & Big Pokey (Instrumental)",
+				artist: "Tre9",
+				url: "/music/77 - Suburbs (Remix) feat Lil KeKe & Big Pokey (Instrumental).mp3"
+			}, {
+				title: "Fire (Instrumental)",
+				artist: "Pee Wee Callins",
+				url: "/music/90.000 - Fire (Instrumental).mp3"
+			}, {
+				title: "Thank You (Remix) Instrumental",
+				artist: "Alkendria",
+				url: "/music/93.061 - Alkendria - Thank You (Remix) Instrumental.mp3"
+			}, {
+				title: "These Eyes Instrumental",
+				artist: "Knine",
+				url: "/music/74 - These Eyes Instrumental.mp3"
 			}
 		];
 		this.currentTrack = 0;
