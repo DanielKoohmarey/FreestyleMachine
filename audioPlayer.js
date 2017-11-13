@@ -1,6 +1,7 @@
 class AudioPlayer {
-	constructor(audioSource) {
+	constructor(audioSource, wordGenerator) {
 		this.audioSource = audioSource;
+		this.wordGenerator = wordGenerator;
 		this.tracks = [{
 				title: "Little Jesus (Instrumental)",
 				artist: "Fla.vor Alliance",
@@ -85,7 +86,6 @@ class AudioPlayer {
 		];
 		this.currentTrack = 0;
 		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
-		this.updateTrackInfo();
 	}
 
 	updateTrackInfo() {
@@ -101,10 +101,12 @@ class AudioPlayer {
 			this.audioSource.audio.play();
 			playButton.setAttribute('data-icon', '_');
 			playButton.text = "Pause";
+			this.wordGenerator.startCycle();
 		} else {
 			this.audioSource.audio.pause();
 			playButton.setAttribute('data-icon', 'I');
 			playButton.text = "Play";
+			this.wordGenerator.stopCycle();
 		}
 	}
 
@@ -127,10 +129,14 @@ class AudioPlayer {
 	}
 }
 
-window.onload = function (e) {
-	// Assume audio has been created from audioVisualizer.js
-	var player = new AudioPlayer(audio);
-
+// Assume audio has been created from audioVisualizer.js
+// Assume generator has been created from wordGenerator.js
+var player = new AudioPlayer(audio, generator);
+	
+window.addEventListener('load', function (e) {
+	// Set initial track info
+	player.updateTrackInfo();
+	
 	// Setup click handlers
 	var prevButton = document.getElementsByClassName("et_pb_button_0")[0];
 	prevButton.addEventListener('click', function (e) {
@@ -149,4 +155,4 @@ window.onload = function (e) {
 		e.preventDefault();
 		player.next();
 	});
-}
+});
