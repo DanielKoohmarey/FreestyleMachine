@@ -9,21 +9,27 @@ class AudioW {
 		this.audio.controls = false;
 		this.audio.loop = true;
 		this.audio.autoplay = false;
+		
+		try
+		{
+			this.ctx = new AudioContext();
+			this.audioSrc = this.ctx.createMediaElementSource(this.audio);
+			this.analyser = this.ctx.createAnalyser();
+			this.audioData = [];
+			this.sepValue = sepValue;
 
-		this.ctx = new AudioContext();
-		this.audioSrc = this.ctx.createMediaElementSource(this.audio);
-		this.analyser = this.ctx.createAnalyser();
-		this.audioData = [];
-		this.sepValue = sepValue;
+			// Connect the MediaElementSource with the analyser
+			this.audioSrc.connect(this.analyser);
+			this.audioSrc.connect(this.ctx.destination);
 
-		// Connect the MediaElementSource with the analyser
-		this.audioSrc.connect(this.analyser);
-		this.audioSrc.connect(this.ctx.destination);
-
-		// FrequencyBinCount tells how many values are receive from the analyser
-		this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
-
-		//this.audio.play();
+			// FrequencyBinCount tells how many values are receive from the analyser
+			this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
+		}
+		catch(e)
+		{
+			// AudioContext is not supported by certain browsers e.g (iOS Safari)
+			// We do not display the visualizer on mobile
+		}
 	};
 
 	getAudioData() {
@@ -191,28 +197,29 @@ class Webgl {
 	}
 }
 
-// Index.js
 let webgl;
 let audio; // avoid global namespace with var
 
-// webgl settings
 audio = new AudioW(70);
+webgl = new Webgl(500, 250, audio);
 
 var visualizer = document.getElementById("visualizer");
 
-webgl = new Webgl(500, 250, audio);
+// Visualizer does not exist on mobile
+if(visualizer != null)
+{
+	visualizer.appendChild(webgl.renderer.domElement);
 
-visualizer.appendChild(webgl.renderer.domElement);
+	//window.onresize = resizeHandler;
 
-window.onresize = resizeHandler;
+	animate();
 
-animate();
+	//function resizeHandler() {
+	//	webgl.resize(visualizer.offsetWidth, visualizer.offsetHeight);
+	//}
 
-function resizeHandler() {
-	webgl.resize(visualizer.offsetWidth, visualizer.offsetHeight);
-}
-
-function animate() {
-	requestAnimationFrame(animate);
-	webgl.render();
+	function animate() {
+		requestAnimationFrame(animate);
+		webgl.render();
+	}
 }

@@ -132,27 +132,39 @@ class AudioPlayer {
 // Assume audio has been created from audioVisualizer.js
 // Assume generator has been created from wordGenerator.js
 var player = new AudioPlayer(audio, generator);
-	
+
 window.addEventListener('load', function (e) {
 	// Set initial track info
 	player.updateTrackInfo();
-	
+
 	// Setup click handlers
-	var prevButton = document.getElementsByClassName("et_pb_button_0")[0];
-	prevButton.addEventListener('click', function (e) {
+	var prevHandler = function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		player.prev();
-	});
+	};
+	var prevButton = document.getElementsByClassName("et_pb_button_0")[0];
+	prevButton.setAttribute("href", "javascript:void(0)");
+	prevButton.addEventListener('click', prevHandler);
+	prevButton.addEventListener('touchstart', prevHandler);
 
-	var playButton = document.getElementsByClassName("et_pb_button_1")[0];
-	playButton.addEventListener('click', function (e) {
+	var playHandler = function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		player.play();
-	});
+	};
+	var playButton = document.getElementsByClassName("et_pb_button_1")[0];
+	playButton.setAttribute("href", "javascript:void(0)");
+	playButton.addEventListener('click', playHandler);
+	playButton.addEventListener('touchstart', playHandler);
 
-	var nextButton = document.getElementsByClassName("et_pb_button_2")[0];
-	nextButton.addEventListener('click', function (e) {
+	var nextHandler = function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		player.next();
-	});
+	};
+	var nextButton = document.getElementsByClassName("et_pb_button_2")[0];
+	nextButton.setAttribute("href", "javascript:void(0)");
+	nextButton.addEventListener('click', nextHandler);
+	nextButton.addEventListener('touchstart', nextHandler);
 });
