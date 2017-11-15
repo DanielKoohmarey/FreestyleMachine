@@ -172,7 +172,7 @@ class Webgl {
 
 	}
 
-	resize(width, height) {
+	/*resize(width, height) {
 		this.camera.left = width / -2;
 		this.camera.right = width / 2;
 		this.camera.top = height / 2;
@@ -181,7 +181,7 @@ class Webgl {
 		this.camera.updateProjectionMatrix();
 
 		this.renderer.setSize(width, height);
-	};
+	};*/
 
 	render() {
 
