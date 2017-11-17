@@ -112,13 +112,18 @@ class AudioPlayer {
 	}
 
 	next() {
+		var paused = this.audioSource.audio.paused;
 		this.currentTrack = (this.currentTrack + 1) % this.tracks.length;
 		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
 		this.updateTrackInfo();
-		this.play();
+		if(!paused)
+		{
+			this.play();
+		}
 	}
 
 	prev() {
+		var paused = this.audioSource.audio.paused;
 		if (this.currentTrack == 0) {
 			this.currentTrack = this.tracks.length - 1;
 		} else {
@@ -126,7 +131,10 @@ class AudioPlayer {
 		}
 		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
 		this.updateTrackInfo();
-		this.play();
+		if(!paused)
+		{
+			this.play();
+		}
 	}
 }
 
