@@ -86,10 +86,14 @@ class AudioPlayer {
 		];
 		shuffle(this.tracks);
 		this.currentTrack = 0;
-		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
+		
+		// Set initial track info
+		this.updateTrack();
 	}
 
-	updateTrackInfo() {
+	updateTrack() {
+		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
+		this.audioSource.audio.load();
 		var title = document.getElementById("title");
 		title.innerText = this.tracks[this.currentTrack].title;
 		var artist = document.getElementById("artist");
@@ -114,8 +118,7 @@ class AudioPlayer {
 	next() {
 		var paused = this.audioSource.audio.paused;
 		this.currentTrack = (this.currentTrack + 1) % this.tracks.length;
-		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
-		this.updateTrackInfo();
+		this.updateTrack();
 		if(!paused)
 		{
 			this.play();
@@ -129,8 +132,7 @@ class AudioPlayer {
 		} else {
 			this.currentTrack--;
 		}
-		this.audioSource.audio.src = this.tracks[this.currentTrack].url;
-		this.updateTrackInfo();
+		this.updateTrack();
 		if(!paused)
 		{
 			this.play();
@@ -141,9 +143,6 @@ class AudioPlayer {
 // Assume audio has been created from audioVisualizer.js
 // Assume generator has been created from wordGenerator.js
 var player = new AudioPlayer(audio, generator);
-
-// Set initial track info
-player.updateTrackInfo();
 
 // Setup click handlers
 var prevHandler = function (e) {
