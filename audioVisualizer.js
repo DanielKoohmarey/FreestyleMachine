@@ -142,11 +142,10 @@ class Webgl {
 					visible = true;
 				}
 
-				const newCube = new Cube(30, visible);
+				const newCube = new Cube(this.cubeSize, visible);
 				const index = this.cubes.length;
 				this.cubes.push(newCube);
-				// Note: we offset the horizontal by 60 to center the cubes on the canvas.
-				this.cubes[index].position.set(j * (this.cubeSize + this.cubeOffset) - this.cubesTotalWidth - 60,
+				this.cubes[index].position.set(j * (this.cubeSize + this.cubeOffset) - this.cubesTotalWidth,
 					i * (this.cubeSize + this.cubeOffset) - this.cubesTotalHeight,
 					0);
 				this.scene.add(newCube);
