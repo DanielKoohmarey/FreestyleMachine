@@ -86,7 +86,7 @@ class AudioPlayer {
 		];
 		shuffle(this.tracks);
 		this.currentTrack = 0;
-		
+
 		// Set initial track info
 		this.updateTrack();
 	}
@@ -103,6 +103,19 @@ class AudioPlayer {
 	play() {
 		var playButton = document.getElementsByClassName("et_pb_button_1")[0];
 		if (this.audioSource.audio.paused) {
+			var loadWheel = document.getElementById("loadWheel");
+			// Ensure the audio source has buffered data
+			if (this.audioSource.audio.readyState < 2) {
+				if (loadWheel.style.display != "block") {
+					loadWheel.style.display = "block";
+				}
+				setTimeout(this.play.bind(this), 100);
+				return;
+			}
+			else
+			{
+				loadWheel.style.display = "none";
+			}
 			this.audioSource.audio.play();
 			playButton.setAttribute('data-icon', '_');
 			playButton.text = "Pause";
@@ -119,8 +132,7 @@ class AudioPlayer {
 		var paused = this.audioSource.audio.paused;
 		this.currentTrack = (this.currentTrack + 1) % this.tracks.length;
 		this.updateTrack();
-		if(!paused)
-		{
+		if (!paused) {
 			this.play();
 		}
 	}
@@ -133,8 +145,7 @@ class AudioPlayer {
 			this.currentTrack--;
 		}
 		this.updateTrack();
-		if(!paused)
-		{
+		if (!paused) {
 			this.play();
 		}
 	}
