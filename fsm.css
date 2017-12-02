@@ -1,0 +1,67 @@
+#generatedWord {
+	display: none;
+	padding-top: 10px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+}
+
+#visualizer {
+	max-height: 250px;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#visualizer canvas {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#loadWheel {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #000000;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}
+
+@-webkit-keyframes spin {
+    0% {-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+/* Mobile */
+@media only screen and (max-width: 500px) {
+    #wordContainer {
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+	#visualizer {
+		display: none;
+	}
+	.et_pb_row {
+		padding-bottom: 0px!important;
+	}
+	.et_pb_column_0 {
+		margin-bottom: 0px!important;
+	}
+}
