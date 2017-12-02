@@ -1,0 +1,42 @@
+<!-- The following html snippets exist within code blocks of the Wordpress Page -->
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/fsm.css"></link>
+<link rel="stylesheet" href="/nouislider.min.css"></link>
+
+<!-- Generated Word Div -->
+<div id="wordContainer">
+   <h1 id="generatedWord">Your Word to Freestyle to Will Appear Here</h1>
+</div>
+
+<!-- Audio Visualizer Div -->
+<div id="visualizer"></div>
+
+<!-- Track Info Div -->
+<div id="track" style="text-align:center;">
+   <h4 id = "title"></h4>
+   <h4 id="artist" style="font-weight:bold;"></h4>
+</div>
+
+<!-- Loading Wheel Div -->
+<div id="loadWheel"></div>
+
+<!-- Slider Div & Description -->
+<div id="slider"></div>
+<br />
+<h4 id="slideValue" style="text-align: center; padding-top:30px;">Word will change every <b><span id="cycleTime">20</b> seconds!</h4>
+
+<!-- Scripts assume the following load order to avoid waiting for the entire document to load -->
+<!-- Audio Visualizer JS -->
+<script src="/TweenMax.min.js"></script>
+<script src="/three.min.js"></script>
+<script src="/audioVisualizer.js"></script>
+
+<!-- Slider JS -->
+<script src="/wNumb.min.js"></script>
+<script src="/nouislider.min.js"></script>
+
+<!-- Word Generator JS -->
+<script src="/wordGenerator.js"></script>
+
+<!-- Audio Player JS -->
+<script src="/audioPlayer.js"></script>
