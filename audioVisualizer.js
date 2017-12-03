@@ -108,8 +108,8 @@ class Webgl {
 
 		this.scene = new THREE.Scene();
 
-		this.camera = new THREE.OrthographicCamera(width / -2, width / 2, height / 2, height / -2, 1, 1000)
-			this.camera.position.set(0, 0, 100);
+		this.camera = new THREE.OrthographicCamera(width / -2, width / 2, height / 2, height / -2, 1, 1000);
+		this.camera.position.set(0, 0, 100);
 
 		this.renderer = new THREE.WebGLRenderer({
 				alpha: true
